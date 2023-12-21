@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+@model VistasDinamicas.ViewModels.ProductosViewModel
+
+<h2>Lista de Productos</h2>
+<ul>
+    @foreach (var producto in Model.Productos)
+    {
+        <li>
+            <a href="@Url.Action("Detalles", new {id=producto.Id})">@producto.Nombre</a>
+        </li>
+    }
+</ul>
+<hr />
+<h4>Detalles del producto seleccionado</h4>
+@if (Model.ProductoSeleccionado != null)
+{
+    <p>Nombre del producto: @Model.ProductoSeleccionado.Nombre</p>
+}
+else
+{
+    <p>No se ha seleccionado ningún producto.</p>
+}
